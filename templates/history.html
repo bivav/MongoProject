@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="../static/css/style.css" rel="stylesheet">
+
+    <STYLE>
+
+        .deleting {
+            margin-right: 1%;
+            height: 40px;
+            padding: 1%;
+        }
+
+    </STYLE>
+
+</head>
+<body style="background-color: #fff">
+
+
+    <div class="container">
+
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+            <H3>Search History</H3>
+            <form method="post">
+                <button type="submit" class="btn btn-danger" formmethod="post">Clear All Search History</button>
+            </form>
+
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endwith %}
+        </div>
+
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover table-bordered ">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Search</th>
+                            <th>Category</th>
+                            <th>Date</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for data in history_data %}
+                        <tr>
+                            <th scope="row">{{ data[0] }}</th>
+                            <td>{{data[1]}}</td>
+                            <td>{{data[2]}}</td>
+                            <td>{{data[3]}}</td>
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <form method="POST">
+                <input class="deleting" type="text" name="id" placeholder="Enter the ID to delete">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

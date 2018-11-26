@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fast Search</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicons -->
+    <link href="../static/img/favicon.png" rel="icon">
+    <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Main Stylesheet File -->
+    <link href="../static/css/style.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <!-- <link href="../static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
+
+
+
+    <style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 100%;
+        padding: 30px;
+        border-radius: 5px;
+        background-color : white;
+        margin: 30px;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    .card-img-top {
+        border-radius: 5px 5px 0 0;
+        float: left;
+        padding-right: 20px;
+    }
+
+    .card-body {
+
+        text-align : justify;
+    }
+
+    .card-text {
+        font-family : 'Lato', sans-serif,
+        line-height : inherit;
+        font-size : 18px;
+
+        display: -webkit-box;
+        overflow : hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+    }
+
+    .card-subtitle {
+        font-family : 'Lato', sans-serif;
+        font-size : 14px;
+        margin-top : 10px;
+        margin-bottom : 10px;
+    }
+
+    .history {
+        font-size: 15px;
+        color: #fff;
+    }
+
+    a.history:hover, a.history:active {
+        color: #333;
+    }
+
+    a.history:focus {
+
+        color: #fff;
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+                </button>
+                <a class="navbar-brand" href="/">
+                    <b>FAST SEARCH</b>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/signin/">ADMIN</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <div id="headerwrap" style="min-height: 350px; padding-top: 80px; margin-bottom: 20px;">
+
+        <div class="container">
+            <div class="row" style="text-align : center;">
+                <div class="col-lg-12">
+                    <h1>Let's Do A Fast Search!</h1>
+
+                    <form class="form-inline" role="form" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="keyword" placeholder="Enter a keyword" name="keyword" value="{{ request.form.keyword }}">
+
+                            <select class="form-control" name="select_list">
+                                <option value="Actor">{{ select_data[0] }}</option>
+                                <option value="Artist">{{ select_data[1] }}</option>
+                                <option value="Auto Mobile">{{ select_data[2] }}</option>
+                            </select>
+
+                        </div>
+                        <button type="submit" class="btn btn-warning btn-lg">Search</button>
+
+                    </form>
+
+                </div>
+                <!-- /col-lg-6 -->
+
+                <div class="col-lg-6">
+                </div>
+                <!-- /col-lg-6 -->
+
+            </div>
+            <!-- /row -->
+            <div class="row" style="text-align : center; margin-top: 10px;">
+                <div class="col-lg-12">
+                    <a href="/history/" class="history">Search History</a>
+                </div>
+                <!-- /col-lg-6 -->
+
+                <div class="col-lg-6">
+
+                </div>
+                <!-- /col-lg-6 -->
+
+            </div>
+            <!-- /row -->
+        </div>
+        </div>
+        <!-- /container -->
+    <!-- /headerwrap -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                {% for data in data_content %}
+                <div class="card">
+
+                    <div class="card-body">
+                    <img class="card-img-top" src="{{ data[1] }}" alt="Card image cap">
+
+                        <h2 class="card-title">{{ data[0] }}</h2>
+                        <h4 class="card-subtitle"> Born on {{ data[2] }}</h4>
+                        <h3 class="card-subtitle">{{ data[3] }}</h3>
+                        <hr/>
+                        <p class="card-text"> {{ data[4] }}</p>
+
+                        <a href="{{ data[5] }}" class="btn btn-primary" target="_blank">View More Details </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% for data in data_artist %}
+                <div class="card">
+
+                    <div class="card-body">
+                    <img style="max-width: 175px;" class="card-img-top" src="{{ data[1] }}" alt="Card image cap">
+
+                        <h2 class="card-title">{{ data[0] }}</h2>
+                        <h4 class="card-subtitle"> Born on {{ data[2] }}</h4>
+                        <hr/>
+                        <p class="card-text"> {{ data[3] }}</p>
+
+                        <a href="{{ data[4] }}" class="btn btn-primary" target="_blank">View More Details </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% for data in data_car %}
+                <div class="card">
+
+                    <div class="card-body">
+                    <img class="card-img-top" src="{{ data[1] }}" alt="Card image cap">
+
+                        <h2 class="card-title">{{ data[0] }}</h2>
+                        <hr/>
+                        <p class="card-text"> {{ data[2] }}</p>
+
+                        <a href="{{ data[3] }}" class="btn btn-primary" target="_blank">View More Details </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <!-- /row -->
+        <hr/>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row mt centered">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h1>Our Awesome Team.</h1>
+            </div>
+        </div>
+        <!-- /row -->
+
+        <div class="row mt centered">
+            <div class="col-lg-4">
+                <img class="img-circle" src="../static/img/parusha.jpg" width="140" alt="">
+                <h4>Parusha Pradhan</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                <p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+            </div>
+            <!--/col-lg-4 -->
+
+            <div class="col-lg-4">
+                <img class="img-circle" src="../static/img/shil.jpg" width="140" alt="">
+                <h4>Shilpa Sri Chintakunta</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                <p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+            </div>
+            <!--/col-lg-4 -->
+
+            <div class="col-lg-4">
+                <img class="img-circle" src="../static/img/bivav.jpg" width="140" alt="">
+                <h4>Bivav Raj Satyal</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                <p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"></i></p>
+            </div>
+            <!--/col-lg-4 -->
+        </div>
+            <!-- /row -->
+    </div>
+    <!-- /container -->
+    <hr>
+
+    <div id="copyrights">
+            <div class="container">
+                    <p>
+                            &copy; Copyrights <strong>Fast Search</strong>. All Rights Reserved
+                    </p>
+            </div>
+    </div>
+    <!-- / copyrights -->
+
+    <!-- JavaScript Libraries -->
+    <script src="../static/lib/jquery/jquery.min.js"></script>
+    <script src="../static/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/lib/php-mail-form/validate.js"></script>
+    <script src="../static/lib/easing/easing.min.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="../static/js/main.js"></script>
+
+</body>
+</html>

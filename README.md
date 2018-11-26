@@ -19,11 +19,11 @@ __________________________________________________________________
     ```git init```\
     ```git remote -v```
     
-    If you don't see the url with *https://github.com/bivav/mongoProject.git* \
+    If you don't see the url with *https://github.com/bivav/MongoProject.git* \
     then do the following:\
-    ```git remote add origin https://github.com/bivav/mongoProject.git```\
+    ```git remote add origin https://github.com/bivav/MongoProject.git```\
     If you are getting error saying already initialized url then use this \
-    ```git remote set-url origin https://github.com/bivav/mongoProject.git```
+    ```git remote set-url origin https://github.com/bivav/MongoProject.git```
 3. Once the url is set now we can pull the code.
 4. Use the following command to pull the code from git.
 
@@ -42,11 +42,11 @@ __________________________________________________________________
     
 2. Then commit your changes:
 
-    ```git commit -m "(updates done by bivav)"```
+    ```git commit -m "(updates done by you)"```
  
 3. Then add the git url or set-url
     
-    ```git remote add origin https://github.com/bivav/mongoProject.git```
+    ```git remote add origin https://github.com/bivav/MongoProject.git```
 
 4. Then push your code:
 

@@ -1,4 +1,4 @@
-## Getting the project to work you need to follow few steps:
+### Getting the project to work you need to follow few steps:
 
 ###### NOTE: Get PyCharm (Download it!)
 
@@ -9,10 +9,29 @@
 2. If you have installed any new libraries then update the requirements.txt before you push the code.
 
     ```pip freeze >> requirements.txt```
+   
 
 __________________________________________________________________
 
-### Steps:
+
+#### FIRST, IMPORT DATABASES FIRST
+Use the following command to import databases in your MongoDB
+
+For cars data:
+```mongoimport --db student_db --collection cars_data --file cars_data.json```
+
+For actor data:
+```mongoimport --db student_db --collection actor_data --file actor_data.json```
+
+For artist data:
+```mongoimport --db student_db --collection artist_data --file artist_data.json```
+
+If you get error, contact me.
+
+__________________________________________________________________
+
+
+#### SECOND, STEPS TO PULL:
 1. Create "**New Project**" in PyCharm. Make sure you have Virtual Environment setup properly.
 2. Once project starts, to the bottom left corner press "**Terminal**" and execute the following commands:
 
@@ -34,7 +53,7 @@ __________________________________________________________________
 5. Once the code is fetched, sometimes you might need to restart PyCharm or refresh it.
 
 
-### STEPS TO PUSH THE CODE:
+#### THIRD, PUSH THE CODE AFTER EDITING:
 1. Once you have edited the code, you can add or update the code to github.\
     ***NOTE: Please ask me and show me before you push***
     
